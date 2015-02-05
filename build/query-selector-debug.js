@@ -1,3 +1,4 @@
+//! Copyright 2015, kissy-query-selector@1.0.6 MIT Licensed, build time: Thu, 05 Feb 2015 06:49:47 GMT 
 modulex.add("query-selector", [], function(require, exports, module) {
 
 /*

@@ -15,11 +15,11 @@ var jscs = require('gulp-jscs');
 var replace = require('gulp-replace');
 var wrapper = require('gulp-wrapper');
 var date = new Date();
-var header = ['/*',
+var header = ['//!',
         'Copyright ' + date.getFullYear() + ', ' + packageInfo.name + '@' + packageInfo.version,
-        packageInfo.license + ' Licensed',
+        packageInfo.license + ' Licensed,',
         'build time: ' + (date.toGMTString()),
-    '*/', ''].join('\n');
+    '\n'].join(' ');
     
 gulp.task('lint', function () {
     return gulp.src(['./lib/**/*.js', '!**/parser.js'])
@@ -62,7 +62,9 @@ gulp.task('standalone', ['build'], function () {
         .pipe(gulp.dest(build))
         .pipe(filter('query-selector-standalone-debug.js'))
         .pipe(replace(/@DEBUG@/g, ''))
-        .pipe(uglify())
+		.pipe(uglify({
+			preserveComments: 'some'
+		 }))
         .pipe(rename('query-selector-standalone.js'))
         .pipe(gulp.dest(build));
 });
@@ -87,10 +89,15 @@ gulp.task('build', ['lint'], function () {
             ]
         }))
         .pipe(replace(/@VERSION@/g, packageInfo.version))
+		.pipe(wrapper({
+			header: header
+		 }))
         .pipe(gulp.dest(build))
         .pipe(filter('query-selector-debug.js'))
         .pipe(replace(/@DEBUG@/g, ''))
-        .pipe(uglify())
+		.pipe(uglify({
+			preserveComments: 'some'
+		 }))
         .pipe(rename('query-selector.js'))
         .pipe(gulp.dest(build));
 });

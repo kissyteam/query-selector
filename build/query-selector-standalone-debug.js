@@ -1,10 +1,7 @@
-/*
-Copyright 2014, query-selector@1.0.6
-MIT Licensed
-build time: Thu, 16 Oct 2014 03:51:57 GMT
-*/
+//! Copyright 2015, kissy-query-selector@1.0.6 MIT Licensed, build time: Thu, 05 Feb 2015 06:49:47 GMT 
 var querySelectorAll = (function(){ var module = {};
 
+//! Copyright 2015, kissy-query-selector@1.0.6 MIT Licensed, build time: Thu, 05 Feb 2015 06:49:47 GMT 
 var _querySelector_;
 _querySelector_ = function (exports) {
   /*
