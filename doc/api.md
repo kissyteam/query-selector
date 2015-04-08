@@ -8,6 +8,7 @@ Array
 
 #### Examples:
 
+```html
 	<div id="t">
 		<span>1</span>
 		<span>2</span>
@@ -16,6 +17,7 @@ Array
 		var querySelectorAll = require('query-selector');
 		console.log(querySelectorAll('#t span'));
 	</script>
+```
 
 #### Note:
 
